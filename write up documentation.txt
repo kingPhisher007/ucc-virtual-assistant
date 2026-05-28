@@ -1,0 +1,34 @@
+UCC Virtual Assistant - Project Implementation Notes
+
+1. RESPONSIVE DESIGN IMPROVEMENTS
+---------------------------------
+Challenge:
+The original landing page used fixed dimensions and a layout optimized specifically for the developer's PC resolution. This caused layout breaking, horizontal scrolling, and overlapping elements on smaller screens (tablets and mobile phones).
+
+Solutions Implemented:
+- Multi-tier Media Queries: Added breakpoints at 1024px, 768px, 576px, and 480px to handle everything from large tablets to small smartphones.
+- Fluid Hero Section: Changed the Hero container from a fixed grid to a responsive one that stacks content and stats vertically on smaller viewports.
+- Mobile-First Action items: Buttons in the hero section now stack vertically on mobile (under 576px) to ensure they are easy to tap and fit within the screen width.
+- Adaptive Chat Widget:
+    - On tablets, the widget width is calculated dynamically.
+    - On small mobile devices (under 480px), the widget transitions to a full-screen mode for better readability and interaction.
+- Typography Scaling: Used relative units and ensured headings resize appropriately to prevent text overflow.
+
+Results:
+The landing page now provides a "well-fitting" experience across all devices, maintaining professional aesthetics regardless of screen size.
+
+
+2. FIXING TRUNCATED RESPONSES
+-----------------------------
+Challenge:
+Users reported that the virtual assistant's responses were cutting off mid-sentence, especially when providing detailed step-by-step instructions (e.g., WiFi connection steps).
+
+Root Cause:
+The `max_tokens` parameter in the frontend API call (`fetch` request in script.js) was hardcoded to 300. This restricted the AI's output length, causing it to stop abruptly once the limit was reached.
+
+Solutions Implemented:
+- Token Limit Increase: Updated the `max_tokens` parameter from 300 to 1500 in both `script.js` and `script1.js`.
+- Parameter Synchronization: Ensured that all scripts interacting with the backend API use consistent and sufficient token limits.
+
+Results:
+The assistant can now deliver comprehensive, multi-step guides and long-form information without interruption, ensuring the user receives complete and helpful answers.

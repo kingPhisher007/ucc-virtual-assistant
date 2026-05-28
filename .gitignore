@@ -1,0 +1,15 @@
+# Secrets
+.env
+backend/.env
+
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large files
+*.docx
+*.pdf
